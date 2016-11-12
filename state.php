@@ -2,7 +2,7 @@
 function start(){
   if(isset($_COOKIE["id"])){ //In a session
     //Recuperer les variables de la session
-    echo "Logged in a session";
+    // echo "Logged in a session";
     showLogged();
   }else{ //Is not in a session
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -12,27 +12,26 @@ function start(){
         $password = $_POST["password"];
 
         if($username == "guest" && $password == "welcome"){
-          echo $username;
-          echo $password;
-          echo "Logged in";
+          echo "Login Succeeded. Welcome ".$username. ".";
           showLogged();
         }else{
-          echo "Username".$username;
-          echo "Pw".$password;
-          echo "Bad username or password";
+          echo "Login Failed.<br />Bad username or password";
+          echo "<br />You entered username: ".$username;
+          echo "<br />and Password: ".$password;
         }
       }else if(isset($_POST["logout"])){
-        echo "logout";
+        // echo "logout";
+        showLoggedOut();
       }
-
     }else{
-      echo "Not in a session, Showing Login";
+      // echo "Not in a session, Showing Login";
       showLogin();
     }
   }
 }
 
 function showLogin(){ ?>
+  <p>Please Log In</p>
   <form method="post" action="#">
     <input type="text" name="username" />
     <input type="text" name="password" /><br />
@@ -47,12 +46,12 @@ function showLogged(){ ?>
   </form>
   <?php
   //Form has been submitted, check if login ok
-
 }
 
 function showLoggedOut(){
   session_unset();
   session_destroy();
+  echo "<p>Thank You. You are now logged out</p>";
 }
 ?>
 
