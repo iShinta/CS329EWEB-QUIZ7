@@ -56,8 +56,8 @@ function showLogged(){
 function showLoggedOut(){
   unset($_COOKIE["id"]);
   unset($_COOKIE["timeloggedin"]);
-  setcookie('id', '', time() - 3600, '/');
-  setcookie('timeloggedin', '', time() - 3600, '/');
+  setcookie("id", '', time() - 3600);
+  setcookie("timeloggedin", '', time() - 3600);
   session_unset();
   session_destroy();
   echo "<p>Thank You. You are now logged out</p>";
