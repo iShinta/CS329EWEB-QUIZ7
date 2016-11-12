@@ -7,18 +7,24 @@ function start(){
   }else{ //Is not in a session
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
       echo "Not in a session, Form Posted";
-      $username = $_POST["username"];
-      $password = $_POST["password"];
+      if(isset($_POST["username"])){
+        $username = $_POST["username"];
+        $password = $_POST["password"];
 
-      if($username == "guest" && $password == "welcome"){
-        echo $username;
-        echo $password;
-        echo "Logged in";
-      }else{
-        echo "Username".$username;
-        echo "Pw".$password;
-        echo "Bad username or password";
+        if($username == "guest" && $password == "welcome"){
+          echo $username;
+          echo $password;
+          echo "Logged in";
+          showLogged();
+        }else{
+          echo "Username".$username;
+          echo "Pw".$password;
+          echo "Bad username or password";
+        }
+      }else if(isset($_POST["logout"])){
+        echo "logout";
       }
+
     }else{
       echo "Not in a session, Showing Login";
       showLogin();
@@ -35,7 +41,11 @@ function showLogin(){ ?>
   </form>
 <?php }
 
-function showLogged(){
+function showLogged(){ ?>
+  <form method="post" action="#">
+    <input type="submit" name="logout" value="Log Out" />
+  </form>
+  <?php
   //Form has been submitted, check if login ok
 
 }
