@@ -6,7 +6,7 @@ function start(){
     showLogged();
   }else{ //Is not in a session
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-      echo "Not in a session, Form Posted";
+      //echo "Not in a session, Form Posted";
       if(isset($_POST["username"])){
         $username = $_POST["username"];
         $password = $_POST["password"];
@@ -18,6 +18,7 @@ function start(){
           echo "Login Failed.<br />Bad username or password";
           echo "<br />You entered username: ".$username;
           echo "<br />and Password: ".$password;
+          echo "<a href=\"http://zweb.cs.utexas.edu/users/cs329e-fa16/minhtri/quiz7/state.php\"> Back to the form </a>";
         }
       }else if(isset($_POST["logout"])){
         // echo "logout";
