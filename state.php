@@ -1,6 +1,12 @@
 <?php
 function start(){
-  echo "Hello wesh";
+  if(isset($_COOKIE["id"])){ //In a session
+    //Recuperer les variables de la session
+    echo "Logged in a session";
+    showLogged();
+  }else{
+    echo "Not logged";
+  }
 }
 ?>
 
