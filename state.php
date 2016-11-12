@@ -18,7 +18,7 @@ function start(){
           echo "Login Failed.<br />Bad username or password";
           echo "<br />You entered username: ".$username;
           echo "<br />and Password: ".$password;
-          echo "<a href=\"http://zweb.cs.utexas.edu/users/cs329e-fa16/minhtri/quiz7/state.php\"> Back to the form </a>";
+          echo "<br /><a href=\"http://zweb.cs.utexas.edu/users/cs329e-fa16/minhtri/quiz7/state.php\"> Back to the form </a>";
         }
       }else if(isset($_POST["logout"])){
         // echo "logout";
