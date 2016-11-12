@@ -6,9 +6,9 @@ function start(){
     showLogged();
   }else{ //Is not in a session
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-      echo "Not in a session, Form Posted"
+      echo "Not in a session, Form Posted";
     }else{
-      echo "Not in a session, Showing Login"
+      echo "Not in a session, Showing Login";
       showLogin();
     }
   }
