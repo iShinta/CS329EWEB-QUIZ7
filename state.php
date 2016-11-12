@@ -11,6 +11,8 @@ function start(){
       $password = $_SERVER[$POST["password"]];
 
       if($username == "guest" && $password == "welcome"){
+        echo $username;
+        echo $password;
         echo "Logged in";
       }else{
         echo "Bad username or password";
