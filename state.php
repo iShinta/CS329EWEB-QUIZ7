@@ -12,7 +12,7 @@ function start(){
         $password = $_POST["password"];
 
         if($username == "guest" && $password == "welcome"){
-          echo "Login Succeeded. Welcome ".$username. ".";
+          echo "Login Succeeded. Welcome ".$username. ".<br />";
           setcookie("id", session_id, time()+60);
           setcookie("timeloggedin", time(), time()+60);
           showLogged();
@@ -54,8 +54,8 @@ function showLogged(){
 }
 
 function showLoggedOut(){
-  setcookie("id", session_id, time());
-  setcookie("timeloggedin", time(), time());
+  unset($_COOKIE["id"]);
+  unset($_COOKIE["timeloggedin"]);
   session_unset();
   session_destroy();
   echo "<p>Thank You. You are now logged out</p>";
