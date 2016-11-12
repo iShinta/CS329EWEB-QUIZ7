@@ -15,6 +15,8 @@ function start(){
         echo $password;
         echo "Logged in";
       }else{
+        echo $username;
+        echo $password;
         echo "Bad username or password";
       }
     }else{
