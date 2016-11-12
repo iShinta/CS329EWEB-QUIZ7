@@ -23,7 +23,7 @@ function start(){
 }
 
 function showLogin(){ ?>
-  <form>
+  <form method="post" action="#">
     <input type="text" name="username" />
     <input type="text" name="password" /><br />
     <input type="submit" name="submit" value="Submit" />
