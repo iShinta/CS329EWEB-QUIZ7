@@ -13,6 +13,8 @@ function start(){
 
         if($username == "guest" && $password == "welcome"){
           echo "Login Succeeded. Welcome ".$username. ".";
+          setcookie("id", session_id, time()+60);
+          setcookie("timeloggedin", time(), time()+60);
           showLogged();
         }else{
           echo "Login Failed.<br />Bad username or password";
@@ -41,7 +43,9 @@ function showLogin(){ ?>
   </form>
 <?php }
 
-function showLogged(){ ?>
+function showLogged(){
+  echo $_COOKIE["id"];
+  echo $_COOKIE["timeloggedin"]; ?>
   <form method="post" action="#">
     <input type="submit" name="logout" value="Log Out" />
   </form>
