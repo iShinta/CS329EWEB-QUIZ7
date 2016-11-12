@@ -7,16 +7,16 @@ function start(){
   }else{ //Is not in a session
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
       echo "Not in a session, Form Posted";
-      $username = $POST["id"];
-      $password = $POST["password"];
+      $username = $GET["id"];
+      $password = $GET["password"];
 
       if($username == "guest" && $password == "welcome"){
         echo $username;
         echo $password;
         echo "Logged in";
       }else{
-        echo $username;
-        echo $password;
+        echo "Username".$username;
+        echo "Pw".$password;
         echo "Bad username or password";
       }
     }else{
