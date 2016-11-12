@@ -1,32 +1,32 @@
 <?php
 function start(){
-  if(isset($_COOKIE["id"])){ //In a session
-    //Recuperer les variables de la session
-    // echo "Logged in a session";
-    showLogged();
-  }else{ //Is not in a session
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-      //echo "Not in a session, Form Posted";
-      if(isset($_POST["username"])){
-        $username = $_POST["username"];
-        $password = $_POST["password"];
+  if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    //echo "Not in a session, Form Posted";
+    if(isset($_POST["username"])){
+      $username = $_POST["username"];
+      $password = $_POST["password"];
 
-        if($username == "guest" && $password == "welcome"){
-          echo "Login Succeeded. Welcome ".$username. ".<br />";
-          setcookie("id", session_id, time()+60);
-          setcookie("timeloggedin", time(), time()+60);
-          showLogged();
-        }else{
-          echo "Login Failed.<br />Bad username or password";
-          echo "<br />You entered username: ".$username;
-          echo "<br />and Password: ".$password;
-          echo "<br /><a href=\"http://zweb.cs.utexas.edu/users/cs329e-fa16/minhtri/quiz7/state.php\"> Back to the form </a>";
-        }
-      }else if(isset($_POST["logout"])){
-        // echo "logout";
-        showLoggedOut();
+      if($username == "guest" && $password == "welcome"){
+        echo "Login Succeeded. Welcome ".$username. ".<br />";
+        setcookie("id", session_id, time()+60);
+        setcookie("timeloggedin", time(), time()+60);
+        showLogged();
+      }else{
+        echo "Login Failed.<br />Bad username or password";
+        echo "<br />You entered username: ".$username;
+        echo "<br />and Password: ".$password;
+        echo "<br /><a href=\"http://zweb.cs.utexas.edu/users/cs329e-fa16/minhtri/quiz7/state.php\"> Back to the form </a>";
       }
-    }else{
+    }else if(isset($_POST["logout"])){
+      // echo "logout";
+      showLoggedOut();
+    }
+  }else{
+    if(isset($_COOKIE["id"])){ //In a session
+      //Recuperer les variables de la session
+      // echo "Logged in a session";
+      showLogged();
+    }else{ //Is not in a session
       // echo "Not in a session, Showing Login";
       showLogin();
     }
