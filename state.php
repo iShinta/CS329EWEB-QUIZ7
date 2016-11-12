@@ -7,7 +7,7 @@ function start(){
   }else{ //Is not in a session
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
       echo "Not in a session, Form Posted";
-      $username = $_POST["id"];
+      $username = $_POST["username"];
       $password = $_POST["password"];
 
       if($username == "guest" && $password == "welcome"){
