@@ -44,8 +44,8 @@ function showLogin(){ ?>
 <?php }
 
 function showLogged(){
-  echo $_COOKIE["id"];
-  echo $_COOKIE["timeloggedin"]; ?>
+  echo "Cookie id: ".$_COOKIE["id"];
+  echo "<br /> Time logged in: ".$_COOKIE["timeloggedin"]; ?>
   <form method="post" action="#">
     <input type="submit" name="logout" value="Log Out" />
   </form>
@@ -54,6 +54,8 @@ function showLogged(){
 }
 
 function showLoggedOut(){
+  setcookie("id", session_id, time());
+  setcookie("timeloggedin", time(), time());
   session_unset();
   session_destroy();
   echo "<p>Thank You. You are now logged out</p>";
